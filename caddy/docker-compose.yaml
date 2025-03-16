@@ -7,6 +7,10 @@ services:
       - TS_EXTRA_ARGS=--advertise-tags=tag:container
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
       - $TAILSCALE_STATE:/var/lib/tailscale
     devices:
@@ -21,10 +25,6 @@ services:
     depends_on:
       - tailscale-caddy
     network_mode: service:tailscale-caddy
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
     volumes:
       - $CADDYFILE:/etc/caddy/Caddyfile
       - caddy_data:/data
