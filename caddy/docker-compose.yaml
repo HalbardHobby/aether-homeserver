@@ -1,6 +1,6 @@
 ---
 services:
-  tailscale-caddy:
+  ts-caddy:
     image: tailscale/tailscale:latest
     hostname: ts-caddy
     environment:
