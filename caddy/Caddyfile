@@ -1,0 +1,23 @@
+listen.the.randomaether.com {
+  reverse_proxy http://aether:8085
+}
+ 
+# calibre-web
+look.the.randomaether.com {
+  reverse_proxy http://aether:8083
+}
+ 
+# immich
+remember.the.randomaether.com {
+  reverse_proxy http://aether:2283
+}
+ 
+# open-webui
+commune.the.randomaether.com {
+  reverse_proxy http://aether:3000
+}
+ 
+# porttainer
+weave.the.randomaether.com {
+  reverse_proxy http://aether:9443
+}
