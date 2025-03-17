@@ -3,8 +3,6 @@ services:
   caddy:
     image: caddy:latest
     restart: unless-stopped
-    depends_on:
-      - tailscale-caddy
     ports:
       - "80:80"
       - "443:443"
