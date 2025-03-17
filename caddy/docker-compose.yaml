@@ -2,7 +2,7 @@
 services:
   ts-caddy:
     image: tailscale/tailscale:latest
-    hostname: ts-caddy
+    hostname: caddy
     environment:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_STATE_DIR=/var/lib/tailscale
@@ -23,7 +23,7 @@ services:
       - caddy_data:/data
       - caddy_config:/config
     depends_on:
-      - tailscale-caddy
+      - ts-caddy
     network_mode: service:ts-caddy
 
 volumes:
