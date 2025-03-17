@@ -1,30 +1,14 @@
+---
 services:
-  tailscale-caddy:
-    image: tailscale/tailscale:latest
-    hostname: tailscale-caddy
-    environment:
-      - TS_AUTHKEY=$TS_AUTHKEY
-      - TS_EXTRA_ARGS=--advertise-tags=tag:container
-      - TS_STATE_DIR=/var/lib/tailscale
-      - TS_USERSPACE=false
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - $TAILSCALE_STATE:/var/lib/tailscale
-    devices:
-      - /dev/net/tun:/dev/net/tun
-    cap_add:
-      - net_admin
-    restart: unless-stopped
-
   caddy:
     image: caddy:latest
     restart: unless-stopped
     depends_on:
       - tailscale-caddy
-    network_mode: service:tailscale-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     volumes:
       - $CADDYFILE:/etc/caddy/Caddyfile
       - caddy_data:/data
