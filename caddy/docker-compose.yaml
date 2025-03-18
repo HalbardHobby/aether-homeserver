@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
   
   caddy:
-    image: caddy:latest
+    image: caddybuilds/caddy-cloudflare:alpine
     restart: unless-stopped
     volumes:
       - $CADDYFILE:/etc/caddy/Caddyfile
