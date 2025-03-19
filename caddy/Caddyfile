@@ -1,23 +1,42 @@
-listen.the.randomaether.com {
-  reverse_proxy http://aether:8085
+(cloudflare) {
+  tls {
+    # Set the ACME DNS challenge provider to use Cloudflare for all sites
+    dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+    resolvers 1.1.1.1
+  }
 }
- 
+
+# Audiobookshelf
+listen.the.randomaether.com {
+  reverse_proxy 100.65.248.51:8085
+  import cloudflare
+}
+
 # calibre-web
 look.the.randomaether.com {
-  reverse_proxy http://aether:8083
+  reverse_proxy 100.65.248.51:8083
+  import cloudflare
 }
- 
+
 # immich
 remember.the.randomaether.com {
-  reverse_proxy http://aether:2283
+  reverse_proxy 100.65.248.51:2283
+  import cloudflare
 }
- 
+
 # open-webui
 commune.the.randomaether.com {
-  reverse_proxy http://aether:3000
+  reverse_proxy 100.65.248.51:3000
+  import cloudflare
 }
- 
-# porttainer
+
+# portainer
 weave.the.randomaether.com {
-  reverse_proxy http://aether:9443
+  reverse_proxy 100.65.248.51:9443 {
+    transport http {
+      tls
+      tls_insecure_skip_verify
+    }
+  }
+  import cloudflare
 }
