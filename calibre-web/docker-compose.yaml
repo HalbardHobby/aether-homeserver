@@ -7,14 +7,11 @@ services:
       - PUID=$CALIBRE_PUID
       - PGID=$CALIBRE_PGID
       - TZ=$CALIBRE_TZ
-      - DOCKER_MODS=linuxserver/mods:universal-calibre #optional
+      - DOCKER_MODS=linuxserver/mods:universal-calibre|linuxserver/mods:calibre-web-dtrpg-metadata #optional
       - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
     volumes:
-      - config:/config
+      - $CALIBRE_CONFIG:/config
       - $CALIBRE_LIBRARY:/books
     ports:
       - $CALIBRE_PORT:8083
     restart: unless-stopped
-  
-volumes:
-  config:
