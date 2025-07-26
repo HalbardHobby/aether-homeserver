@@ -13,14 +13,14 @@ services:
     volumes:
       - $SAMBA_SHARE:/shares/main
     environment:
-      GROUP_main: $SAMBA_GROUP_UID
-      ACCOUNT_main: $SAMBA_ID;$SAMBA_PASSWORD
-      UID_main: $SAMBA_UID
-      GROUPS_main: main
-      SAMBA_VOLUME_CONFIG_main: |
-        [main]
-        valid users = $SAMBA_ID
-        path = /shares/main
-        guest ok = no
-        read only = no
-        browseable = yes
+      - GROUP_$SAMBA_ID=$SAMBA_GROUP_UID
+      - ACCOUNT_$SAMBA_ID=$SAMBA_PASSWORD
+      - UID_$SAMBA_ID=$SAMBA_UID
+      - GROUPS_$SAMBA_ID=$SAMBA_ID
+      - SAMBA_VOLUME_CONFIG_main: |
+          [main]
+          valid users = $SAMBA_ID
+          path = /shares/main
+          guest ok = no
+          read only = no
+          browseable = yes
