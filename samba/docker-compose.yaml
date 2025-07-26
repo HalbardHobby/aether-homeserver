@@ -19,7 +19,7 @@ services:
       GROUPS_main: main
       SAMBA_VOLUME_CONFIG_main: |
         [main]
-        valid_users = main
+        valid users = main
         path = /shares/main
         guest ok = no
         read only = no
