@@ -2,7 +2,7 @@
 
 services:
   samba:
-    image: servercontainers/samba
+    image: ghcr.io/servercontainers/samba:latest
     container_name: samba
     restart: always
     ports:
@@ -10,5 +10,17 @@ services:
       - "138:138/udp"
       - "139:139/tcp"
       - "445:445/tcp"
-
-    
+    volumes:
+      - $SAMBA_SHARE:/shares/main
+    environment:
+      GROUP_main: $SAMBA_GROUP_UID
+      ACCOUNT_main: $SAMBA_ACCOUNT_ID
+      UID_main: $SAMBA_UID
+      GROUPS_main: main
+      SAMBA_VOLUME_CONFIG_main: |
+        [main]
+        valid_users = main
+        path = /shares/main
+        guest ok = no
+        read only = no
+        browseable = yes
