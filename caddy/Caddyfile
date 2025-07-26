@@ -24,6 +24,11 @@ remember.the.randomaether.com {
   import cloudflare
 }
 
+# jellyfin
+watch.the.randomaether.com {
+  reverse_proxy 100.65.248.51:8096
+}
+
 # open-webui
 commune.the.randomaether.com {
   reverse_proxy 100.65.248.51:3000
