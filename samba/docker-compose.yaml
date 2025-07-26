@@ -17,10 +17,11 @@ services:
       - ACCOUNT_$SAMBA_ID=$SAMBA_PASSWORD
       - UID_$SAMBA_ID=$SAMBA_UID
       - GROUPS_$SAMBA_ID=$SAMBA_ID
-      - SAMBA_VOLUME_CONFIG_main: |
-          [main]
-          valid users = $SAMBA_ID
-          path = /shares/main
-          guest ok = no
-          read only = no
-          browseable = yes
+      - |
+        SAMBA_VOLUME_CONFIG_$SAMBA_ID=
+        [$SAMBA_ID]
+        valid users = $SAMBA_ID
+        path = /shares/$SAMBA_ID
+        guest ok = no
+        read only = no
+        browseable = yes
