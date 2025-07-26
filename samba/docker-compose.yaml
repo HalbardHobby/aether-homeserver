@@ -1,27 +1,14 @@
 ---
-
 services:
   samba:
-    image: ghcr.io/servercontainers/samba:latest
+    image: dockurr/samba
     container_name: samba
     restart: always
     ports:
-      - "137:137/udp"
-      - "138:138/udp"
-      - "139:139/tcp"
-      - "445:445/tcp"
+      - 445:445
     volumes:
-      - $SAMBA_SHARE:/shares/main
+      - $SAMBA_SHARE:/storage
     environment:
-      - GROUP_$SAMBA_ID=$SAMBA_GROUP_UID
-      - ACCOUNT_$SAMBA_ID=$SAMBA_PASSWORD
-      - UID_$SAMBA_ID=$SAMBA_UID
-      - GROUPS_$SAMBA_ID=$SAMBA_ID
-      - |
-        SAMBA_VOLUME_CONFIG_$SAMBA_ID=
-        [$SAMBA_ID]
-        valid users = $SAMBA_ID
-        path = /shares/$SAMBA_ID
-        guest ok = no
-        read only = no
-        browseable = yes
+      NAME: $SAMBA_NAME
+      USER: $SAMBA_USER
+      PASS: $SAMBA_PASS
