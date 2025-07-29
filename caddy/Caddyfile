@@ -27,6 +27,17 @@ remember.the.randomaether.com {
 # jellyfin
 watch.the.randomaether.com {
   reverse_proxy 100.65.248.51:8096
+  import cloudflare
+}
+
+# n8n
+teach.the.randomaether.com {
+  reverse_proxy 100.65.248.51:5678
+  transport http {
+      tls
+      tls_insecure_skip_verify
+    }
+  import cloudflare
 }
 
 # open-webui
