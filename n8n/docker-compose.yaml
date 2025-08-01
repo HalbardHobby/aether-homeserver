@@ -9,10 +9,13 @@ services:
       - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
       - N8N_PORT=5678
       - N8N_PROTOCOL=https
-      - N8N_SECURE_COOKIE=false
       - NODE_ENV=production
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
     volumes:
       - ${N8N_DATA}:/home/node/.n8n
       - ${LOCAL_FILES}:/files
+
+networks:
+  private_proxy_network:
+    external: true
