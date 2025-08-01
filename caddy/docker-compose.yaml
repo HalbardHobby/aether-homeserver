@@ -37,6 +37,7 @@ services:
 
 networks:
   internal_use_net:
+    external: true
 
 volumes:
   caddy_data:
