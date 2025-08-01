@@ -18,7 +18,7 @@ services:
       - net_admin
       - sys_module
     networks:
-      - internal_use_net
+      - private_proxy_network
   
   # Reverse proxy for internal use applications
   private_caddy:
