@@ -32,7 +32,7 @@ services:
     environment:
       - CLOUDFLARE_API_TOKEN=$CLOUD_FLARE_TOKEN
     depends_on:
-      - ts-caddy
+      - tailscale
     network_mode: service:tailscale
 
 networks:
