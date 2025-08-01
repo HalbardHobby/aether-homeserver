@@ -12,6 +12,12 @@ services:
       - metadata:/metadata
     environment:
       - TZ=$AUDIOBOOKSHELF_TZ
+    networks:
+      - private_proxy_network
+
+networks:
+  private_proxy_network:
+    external: true
 
 volumes:
   metadata:

@@ -15,3 +15,9 @@ services:
     ports:
       - $CALIBRE_PORT:8083
     restart: unless-stopped
+    networks:
+      - private_proxy_network
+
+networks:
+  private_proxy_network:
+    external: true
