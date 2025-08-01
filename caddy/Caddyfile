@@ -33,7 +33,7 @@ watch.the.randomaether.com {
 # n8n
 teach.the.randomaether.com {
   reverse_proxy 100.65.248.51:5678
-  transport http {
+    transport http {
       tls
       tls_insecure_skip_verify
     }

@@ -1,9 +1,11 @@
 ---
 services:
-  ts-caddy:
+  # VPN client for internal use
+  tailscale:
     image: tailscale/tailscale:latest
-    container_name: caddy_tailscale
-    hostname: caddy
+    container_name: tailscale
+    hostname: mort
+    restart: unless-stopped
     environment:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_STATE_DIR=/var/lib/tailscale
@@ -14,11 +16,14 @@ services:
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - net_admin
-    restart: unless-stopped
+      - sys_module
+    networks:
+      - internal_use_net
   
-  caddy:
+  # Reverse proxy for internal use applications
+  private_caddy:
     image: caddybuilds/caddy-cloudflare:alpine
-    container_name: caddy
+    container_name: private_caddy
     restart: unless-stopped
     volumes:
       - $CADDYFILE:/etc/caddy/Caddyfile
@@ -28,7 +33,10 @@ services:
       - CLOUDFLARE_API_TOKEN=$CLOUD_FLARE_TOKEN
     depends_on:
       - ts-caddy
-    network_mode: service:ts-caddy
+    network_mode: service:tailscale
+
+networks:
+  internal_use_net:
 
 volumes:
   caddy_data:
