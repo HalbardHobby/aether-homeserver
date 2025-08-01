@@ -2,6 +2,7 @@
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
     restart: always
     ports:
       - 5678:5678
@@ -15,6 +16,8 @@ services:
     volumes:
       - ${N8N_DATA}:/home/node/.n8n
       - ${LOCAL_FILES}:/files
+    networks:
+      - private_proxy_network
 
 networks:
   private_proxy_network:
