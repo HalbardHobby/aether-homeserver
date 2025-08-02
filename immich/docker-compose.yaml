@@ -1,6 +1,6 @@
 services:
   immich-server:
-    container_name: immich_server
+    container_name: immich
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
     # extends:
     #   file: hwaccel.transcoding.yml
@@ -11,8 +11,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
     env_file:
       - ../stack.env
-    ports:
-      - '2283:2283'
     depends_on:
       - redis
       - database

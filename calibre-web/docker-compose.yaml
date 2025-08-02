@@ -12,8 +12,6 @@ services:
     volumes:
       - $CALIBRE_CONFIG:/config
       - $CALIBRE_LIBRARY:/books
-    ports:
-      - $CALIBRE_PORT:8083
     restart: unless-stopped
     networks:
       - private_proxy_network

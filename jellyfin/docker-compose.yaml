@@ -5,10 +5,6 @@ services:
     container_name: jellyfin
     user: $JELLYFIN_USER
     restart: always
-    ports:
-      - 8096:8096
-      - 8920:8920
-      - 7359:7359/udp
     volumes:
       - $JELLYFIN_CONFIG:/config
       - $JELLYFIN_CACHE:/cache
