@@ -17,10 +17,16 @@ look.the.randomaether.com {
   reverse_proxy calibre-web:8083
   import cloudflare
 }
- 
+
+# homepage
+the.randomaether.com {
+  reverse_proxy homepage:3000
+  import cloudflare
+}
+
 # immich
 remember.the.randomaether.com {
-  reverse_proxy 100.65.248.51:2283
+  reverse_proxy immich:2283
   import cloudflare
 }
 
@@ -52,4 +58,3 @@ weave.the.randomaether.com {
   }
   import cloudflare
 }
-
