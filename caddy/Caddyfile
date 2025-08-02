@@ -8,16 +8,16 @@
 
 # Audiobookshelf
 listen.the.randomaether.com {
-  reverse_proxy 100.65.248.51:8085
+  reverse_proxy audiobookshelf
   import cloudflare
 }
-
+ 
 # calibre-web
 look.the.randomaether.com {
-  reverse_proxy 100.65.248.51:8083
+  reverse_proxy calibre-web:8083
   import cloudflare
 }
-
+ 
 # immich
 remember.the.randomaether.com {
   reverse_proxy 100.65.248.51:2283
@@ -26,7 +26,7 @@ remember.the.randomaether.com {
 
 # jellyfin
 watch.the.randomaether.com {
-  reverse_proxy 100.65.248.51:8096
+  reverse_proxy jellyfin:8096
   import cloudflare
 }
 
@@ -35,16 +35,16 @@ control.the.randomaether.com {
   reverse_proxy n8n:5678
   import cloudflare
 }
-
+ 
 # open-webui
 commune.the.randomaether.com {
   reverse_proxy 100.65.248.51:3000
   import cloudflare
 }
-
+ 
 # portainer
 weave.the.randomaether.com {
-  reverse_proxy 100.65.248.51:9443 {
+  reverse_proxy portainer:9443 {
     transport http {
       tls
       tls_insecure_skip_verify
@@ -52,3 +52,4 @@ weave.the.randomaether.com {
   }
   import cloudflare
 }
+
