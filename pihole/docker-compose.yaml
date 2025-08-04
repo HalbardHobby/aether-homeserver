@@ -4,16 +4,6 @@ services:
     container_name: pihole-tailscale
     hostname: pihole
     restart: unless-stopped
-    ports:
-      # DNS Ports
-      - "53:53/tcp"
-      - "53:53/udp"
-      # Default HTTP Port
-      - "8080:80/tcp"
-      # Default HTTPs Port. FTL will generate a self-signed certificate
-      - "4443:443/tcp"
-      # DHCP Port
-      - "67:67/udp"
     environment:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_STATE_DIR=/var/lib/tailscale
@@ -26,8 +16,8 @@ services:
       - net_admin
       - sys_module
   
-  pihole:
-    container_name: pihole
+  pihole_tailscale:
+    container_name: pihole_tailscale
     image: pihole/pihole:latest
     environment:
       TZ: 'Europe/Berlin'
@@ -41,3 +31,28 @@ services:
       - sys_nice
     restart: unless-stopped
     network_mode: service:tailscale
+
+  pihole_local:
+    container_name: pihole_local
+    image: pihole/pihole:latest
+    environment:
+      TZ: 'Europe/Berlin'
+      FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
+      FTLCONF_dns_listeningMode: 'all'
+    ports:
+      # DNS Ports
+      - "53:53/tcp"
+      - "53:53/udp"
+      # Default HTTP Port
+      - "8080:80/tcp"
+      # Default HTTPs Port. FTL will generate a self-signed certificate
+      - "4443:443/tcp"
+      # DHCP Port
+      - "67:67/udp"
+    volumes:
+      # For persisting Pi-hole's databases and common configuration file
+      - $PIHOLE_CONFIG:/etc/pihole
+    cap_add:
+      - net_admin
+      - sys_nice
+    restart: unless-stopped
