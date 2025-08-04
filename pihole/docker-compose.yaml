@@ -47,11 +47,10 @@ services:
       FTLCONF_webserver_port: '8080,4443s'
       PIHOLE_UID: $PIHOLE_UID
       PIHOLE_GID: $PIHOLE_GID
+    network_mode: "host"
     dns:
       - 127.0.0.1
       - 1.1.1.1
-    networks:
-      - host
     volumes:
       # For persisting Pi-hole's databases and common configuration file
       - $PIHOLE_LOCAL_CONFIG:/etc/pihole
