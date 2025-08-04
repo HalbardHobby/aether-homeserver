@@ -18,6 +18,9 @@ services:
     cap_add:
       - net_admin
       - sys_module
+    networks:
+      - private_proxy_network
+
   
   pihole_tailscale:
     container_name: pihole_tailscale
@@ -67,7 +70,6 @@ services:
       - sys_nice
     networks:
       - private_proxy_network
-    
 
 networks:
   private_proxy_network:
