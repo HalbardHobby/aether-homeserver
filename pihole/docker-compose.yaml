@@ -26,7 +26,6 @@ services:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
       FTLCONF_dns_listeningMode: 'all'
-      FTLCONF_dns_upstreams: 1.1.1.1
       PIHOLE_UID: $PIHOLE_UID
       PIHOLE_GID: $PIHOLE_GID
     volumes:
@@ -45,7 +44,6 @@ services:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
       FTLCONF_dns_listeningMode: 'all'
-      FTLCONF_dns_upstreams: 1.1.1.1
       PIHOLE_UID: $PIHOLE_UID
       PIHOLE_GID: $PIHOLE_GID
     dns:
