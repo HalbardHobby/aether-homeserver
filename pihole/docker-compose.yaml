@@ -8,6 +8,9 @@ services:
       - TS_AUTHKEY=$TS_AUTHKEY
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
+    dns:
+      - 127.0.0.1
+      - 8.8.8.8
     volumes:
       - $TAILSCALE_STATE:/var/lib/tailscale
     devices:
@@ -26,9 +29,6 @@ services:
       FTLCONF_dns_upstreams: 1.1.1.1
       PIHOLE_UID: $PIHOLE_UID
       PIHOLE_GID: $PIHOLE_GID
-    dns:
-      - 127.0.0.1
-      - 8.8.8.8
     volumes:
       # For persisting Pi-hole's databases and common configuration file
       - $PIHOLE_VPN_CONFIG:/etc/pihole
