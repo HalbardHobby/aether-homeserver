@@ -44,21 +44,14 @@ services:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
       FTLCONF_dns_listeningMode: 'all'
+      FTLCONF_webserver_port: '8080,4443s'
       PIHOLE_UID: $PIHOLE_UID
       PIHOLE_GID: $PIHOLE_GID
     dns:
       - 127.0.0.1
       - 1.1.1.1
-    ports:
-      # DNS Ports
-      - "53:53/tcp"
-      - "53:53/udp"
-      # Default HTTP Port
-      - "8080:80/tcp"
-      # Default HTTPs Port. FTL will generate a self-signed certificate
-      - "4443:443/tcp"
-      # DHCP Port
-      - "67:67/udp"
+    networks:
+      - host
     volumes:
       # For persisting Pi-hole's databases and common configuration file
       - $PIHOLE_LOCAL_CONFIG:/etc/pihole
