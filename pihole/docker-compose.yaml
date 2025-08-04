@@ -41,6 +41,7 @@ services:
   pihole_local:
     container_name: pihole_local
     image: pihole/pihole:latest
+    restart: unless-stopped
     environment:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
@@ -64,4 +65,10 @@ services:
     cap_add:
       - net_admin
       - sys_nice
-    restart: unless-stopped
+    networks:
+      - private_proxy_network
+    
+
+networks:
+  private_proxy_network:
+    external: true
