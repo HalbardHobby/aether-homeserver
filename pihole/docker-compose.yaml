@@ -23,7 +23,12 @@ services:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
       FTLCONF_dns_listeningMode: 'all'
-      DNS1: 1.1.1.1
+      FTLCONF_dns_upstreams: 1.1.1.1
+      PIHOLE_UID: $PIHOLE_UID
+      PIHOLE_GID: $PIHOLE_GID
+    dns:
+      - 127.0.0.1
+      - 8.8.8.8
     volumes:
       # For persisting Pi-hole's databases and common configuration file
       - $PIHOLE_VPN_CONFIG:/etc/pihole
@@ -40,7 +45,12 @@ services:
       TZ: 'Europe/Berlin'
       FTLCONF_webserver_api_password: $PIHOLE_PASSWORD
       FTLCONF_dns_listeningMode: 'all'
-      DNS1: 1.1.1.1
+      FTLCONF_dns_upstreams: 1.1.1.1
+      PIHOLE_UID: $PIHOLE_UID
+      PIHOLE_GID: $PIHOLE_GID
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
     ports:
       # DNS Ports
       - "53:53/tcp"
