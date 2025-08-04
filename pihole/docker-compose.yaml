@@ -5,7 +5,6 @@ services:
     hostname: pihole
     restart: unless-stopped
     ports:
-      ports:
       # DNS Ports
       - "53:53/tcp"
       - "53:53/udp"
