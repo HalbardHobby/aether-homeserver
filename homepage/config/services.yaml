@@ -1,0 +1,93 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+- Multimedia:
+  - Audio Grimoires:
+      href: https://listen.the.randomaether.com
+      icon: audiobookshelf.png
+      description: For when your eyes are tired of the codex but your ears are still ready for adventure!
+      siteMonitor: http://audiobookshelf
+  - Infinite Library:
+      href: https://read.the.randomaether.com
+      icon: calibre-web.png
+      description: Where books go to live forever—Trazyn borrowed the collection.
+      siteMonitor: http://calibre-web:8083
+  - Holocron of Moments:
+      href: https://remember.the.randomaether.com
+      icon: immich.png
+      description: Preserve the moments that matter (or the ones you pretend to care about).
+      siteMonitor: http://immich:2283
+  - Media Cantina:
+      href: https://watch.the.randomaether.com
+      icon: jellyfin.png
+      description: Stream your heart out—sometimes you just need a good holodrama after the exterminatus.
+      siteMonitor: http://jellyfin:8096
+
+- Platform:
+  - Infrastructure:
+    - Warp Gate:
+        icon: tailscale.png
+        description: Your personal exit—use with caution
+        widget:
+          type: tailscale
+          deviceid: nLGFLmbZvo11CNTRL
+          key: tskey-api-k9AruLREC211CNTRL-cvuY8mL3L7ATuVWvmBH67AS3pabo28EWP
+    - Dockmaster:
+          icon: portainer.png
+          href: https://weave.the.randomaether.com
+          description: Where containers sail smoothly across the noosphere—Mechanicus approved.
+          siteMonitor: https://portainer:9443
+          widget:
+            type: portainer
+            url: https://portainer:9443
+            env: 7
+            key: ptr_+jLZmz6uTSPYZed0NwnhYc60jTpNrrbpFChploCCih0=
+    - Reverse Proxy:
+      - Force Field:
+          icon: tailscale.png
+          description: A shield for your data—like an invincible cloak, but without the Sith Lord's smell.
+          widget:
+            type: tailscale
+            deviceid: niwvkrhqgf11CNTRL
+            key: tskey-api-k9AruLREC211CNTRL-cvuY8mL3L7ATuVWvmBH67AS3pabo28EWP
+      - Gatekeeper:
+          icon: caddy.png
+          description: Sanctioned accessor for servitor requests. Like a bouncer, but cooler.
+          siteMonitor: https://tailscale
+          widget:
+            type: caddy
+            url: http://tailscale:2019
+    - AdBlock:
+      - RemoteVPN:
+          icon: tailscale.png
+          widget:
+            type: tailscale
+            deviceid: ne67uG6TBw11CNTRL
+            key: tskey-api-k9AruLREC211CNTRL-cvuY8mL3L7ATuVWvmBH67AS3pabo28EWP
+      - Pihole VPN:
+          icon: pihole.png
+          href: https://pihole/admin/login
+          siteMonitor: http://pihole
+          widget:
+            type: pihole
+            url: http://pihole
+            version: 6 # required if running v6 or higher, defaults to 5
+            key: Eren.jaeger # optional, in v6 can be your password or app password
+      - Pihole Local:
+          icon: pihole.png
+          href: https://aether.local:4443/admin/login
+          siteMonitor: http://pihole_local
+          widget:
+            type: pihole
+            url: http://pihole_local
+            version: 6 # required if running v6 or higher, defaults to 5
+            key: Eren.jaeger # optional, in v6 can be your password or app password
+  - Automation:
+    - Servitor Assembly:
+        href: https://control.the.randomaether.com
+        icon: n8n.png
+        description: Deploy servitors to do your laundry—a lobotomy a day keeps the tedium away.
+    - Data Nexus:
+        icon: nocodb.png
+        description: Hopefully more complete than the jedi records.

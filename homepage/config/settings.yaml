@@ -1,0 +1,38 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/settings/
+
+title: The Aetheric Rudder
+description: If something goes wrong, blame the Astro-Mechs, then the Tech-Priests.
+
+background:
+  image: https://unsplash.com/photos/Vc0SNaIc6Gc/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzU0MjM2ODgyfA&force=true&w=1920
+  blur: sm
+  brightness: 75
+  opacity: 20
+
+cardBlur: md
+theme: dark
+
+statusStyle: "dot"
+
+useEqualHeights: true
+layout:
+  Multimedia:
+    style: row
+    columns: 4
+  Platform:
+    header: false
+    style: row
+    columns: 2
+    Infrastructure:
+      Reverse Proxy:
+        style: row
+        columns: 2
+      AdBlock:
+        style: row
+        columns: 3
+
+providers:
+  openweathermap: openweathermapapikey
+  weatherapi: weatherapiapikey

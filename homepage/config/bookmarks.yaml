@@ -1,0 +1,24 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/bookmarks
+
+- Cloud Services:
+  - Cloudflare:
+    - icon: cloudflare.png
+      href: https://dash.cloudflare.com
+  - Tailscale:
+    - icon: tailscale.png
+      href: https://login.tailscale.com/admin/machines
+
+- Cloud Platforms:
+    - Google Cloud:
+        - icon: google.png
+          href: https://console.cloud.google.com
+    - Digital Ocean:
+        - icon: digitalocean.png
+          href: https://cloud.digitalocean.com
+
+- Entertainment:
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/
