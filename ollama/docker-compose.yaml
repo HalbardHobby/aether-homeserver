@@ -10,6 +10,8 @@ services:
     pull_policy: always
     tty: true
     restart: unless-stopped
+    environment:
+      - OLLAMA_CONTEXT_LENGTH=64000
     deploy:
       resources:
         reservations:
