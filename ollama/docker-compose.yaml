@@ -17,3 +17,16 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    container_name: hermes
+    command: gateway run
+    volumes:
+      - $HERMES_DATA:/opt/data
+    ports:
+      - 8642:8642
+      - 9119:9119
+    environment:
+      - HERMES_DASHBOARD_BASIC_AUTH_USERNAME=$HERMES_DASHBOARD_BASIC_AUTH_USERNAME
+      - HERMES_DASHBOARD_BASIC_AUTH_PASSWORD=$HERMES_DASHBOARD_BASIC_AUTH_PASSWORD
